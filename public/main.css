@@ -1,0 +1,30 @@
+.country-container {
+	border: 1px solid cadetblue;
+	margin: 3%;
+	padding: 4%;
+}
+
+.countries {
+	list-style: none;
+}
+
+.container {
+	width: 80%;
+	margin: auto;
+	text-align: center;
+}
+
+h2 {
+	border-top: 1px solid cadetblue;
+	margin: 32px;
+	padding-top: 3%;
+}
+
+.btn {
+	margin: 2%;
+}
+
+li {
+	border: 1px solid cadetblue;
+	padding: 6px;
+}
