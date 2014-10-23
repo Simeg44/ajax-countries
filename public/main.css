@@ -6,6 +6,11 @@
 
 .countries {
 	list-style: none;
+	padding: 0;
+}
+
+.countries li {
+	position: relative;
 }
 
 .container {
@@ -27,4 +32,22 @@ h2 {
 li {
 	border: 1px solid cadetblue;
 	padding: 6px;
+}
+
+.not-found {
+	color: red;
+}
+
+.not-traveled {
+	color: #666666;
+	position: absolute;
+	top: 39%;
+	left: 20%;
+}
+
+.traveled {
+	color: #5e9e5f;
+	position: absolute;
+	top: 39%;
+	left: 20%;
 }
