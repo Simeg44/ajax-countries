@@ -1,4 +1,6 @@
-var countryList = require("../models/countries.json");
+// var countryList = require("../models/countries.json");
+var Country = require("../models/schema.js");
+var _ = require("underscore");
 
 var indexController = {
 	index: function(req, res) {
@@ -6,7 +8,13 @@ var indexController = {
 	},
 
 	countries: function (req, res) {
-		res.send(countryList);
+		Country.find({}, function(err, results){
+			// send back each item in list
+			_.sortBy(results.name.en, function(name) {
+				return name;
+			})
+			res.send(results);
+		})
 	}
 
 };

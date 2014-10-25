@@ -58,6 +58,7 @@ $(function(){
 
 				$("#country-list").append(country);
 			};
+			findCountry.val("");
 			// var searchResult = createElement(responseData);
 
 			// $('#list').append("<h2>Search Result</h2>");
@@ -76,20 +77,34 @@ $(function(){
 
 	// Change class of not-travel element when clicked
 	$(document).on("click", ".not-traveled", function() {
-		$(this).removeClass("not-traveled").addClass("traveled");
 
-		var container = $(this).closest("li");
-		var countryId = container.attr("data-id");
-		console.log(countryId);
+		var icon = $(this);
+		var countryId = icon.closest("li").attr("data-id");
+		console.log("id", countryId);
 
 		$.get("/api/traveled", {id: countryId}, function(responseData){
 			console.log(responseData);
+			// If the attempt to add "traveled" key was successful
+			// then change the class of its element
+			if (responseData.success) {
+				icon.removeClass("not-traveled").addClass("traveled");
+			}
 		})
 	});
 
 	// Change class of traveled element
 	$(document).on("click", ".traveled", function() {
-		$(this).removeClass("traveled").addClass("not-traveled");
+		var icon = $(this);
+		var countryId = icon.closest("li").attr("data-id");
+
+		$.get("/api/untraveled", {id: countryId}, function(responseData){
+			console.log(responseData);
+			// If the attempt to add "traveled" key was successful
+			// then change the class of its element
+			if (responseData.success) {
+				icon.removeClass("traveled").addClass("not-traveled");
+			}
+		})
 	});
 
 })
